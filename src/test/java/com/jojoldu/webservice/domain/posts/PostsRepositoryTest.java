@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.List;
+
 /**
  * Created by jojoldu@gmail.com on 2017. 12. 23.
  * Blog : http://jojoldu.tistory.com
@@ -26,8 +30,22 @@ public class PostsRepositoryTest {
     }
 
     @Test
-    public void 게시글저장_불러오기() {
+    public void save_boardAndloaded_board() {
         //given
+        String title = "테스트 게시글";
+        String content = "테스트 본문";
 
+        postsRepository.save(Posts.builder()
+                                .title(title)
+                                .content(content)
+                                .author("jojoldu@gmail.com")
+                                .build());
+        //when
+        List<Posts> postsList = postsRepository.findAll();
+
+        //then
+        Posts posts = postsList.get(0);
+        assertThat(posts.getTitle()).isEqualTo(title);
+        assertThat(posts.getContent()).isEqualTo(content);
     }
 }
