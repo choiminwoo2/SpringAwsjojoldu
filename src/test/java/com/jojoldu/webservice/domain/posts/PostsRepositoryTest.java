@@ -32,8 +32,8 @@ public class PostsRepositoryTest {
     @Test
     public void save_boardAndloaded_board() {
         //given
-        String title = "테스트 게시글";
-        String content = "테스트 본문";
+        String title = "테스트게시글";
+        String content = "테스트본문";
 
         postsRepository.save(Posts.builder()
                                 .title(title)
