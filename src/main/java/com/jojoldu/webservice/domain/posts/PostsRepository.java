@@ -1,5 +1,4 @@
 package com.jojoldu.webservice.domain.posts;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -7,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Blog : http://jojoldu.tistory.com
  * Github : https://github.com/jojoldu
  */
+public interface PostsRepository extends JpaRepository<Posts,Long> {
 
-public interface PostsRepository extends JpaRepository<Posts, Long>{
 }
