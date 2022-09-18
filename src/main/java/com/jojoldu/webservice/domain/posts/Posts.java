@@ -1,5 +1,6 @@
 package com.jojoldu.webservice.domain.posts;
 
+import com.jojoldu.webservice.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +18,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @Entity
 @Getter
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     @Id
     @GeneratedValue
