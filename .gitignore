@@ -26,4 +26,5 @@ nbdist/
 .nb-gradle/
 
 ### properties ###
-application-ouath.properties
+application-oauth.properties
+application-db.properties
