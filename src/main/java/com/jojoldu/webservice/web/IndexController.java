@@ -1,6 +1,7 @@
 package com.jojoldu.webservice.web;
 
 
+import com.jojoldu.webservice.config.auth.dto.SessionUser;
 import com.jojoldu.webservice.dto.PostsResponseDto;
 import com.jojoldu.webservice.service.PostsService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
@@ -11,14 +12,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.mail.Session;
+import javax.servlet.http.HttpSession;
+
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
 
     private final PostsService postsService;
+    private final HttpSession httpSession;
+
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("posts", postsService.findAllDesc());
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+        if(sessionUser != null){
+            model.addAttribute("userName", sessionUser.getName());
+        }
         return "index";
     }
 
