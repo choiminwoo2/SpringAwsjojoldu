@@ -36,9 +36,12 @@ public class CustomOauth2UserService implements OAuth2UserService<OAuth2UserRequ
                 getClientRegistration().getProviderDetails()
                 .getUserInfoEndpoint()
                     .getUserNameAttributeName();
+        // OAuthAttributes DTO를 이용하여 Ouath 유저정보를 담는다.
         OAuthAttributes attributes = OAuthAttributes.
                 of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
+        //유저를 확인하고 이메일이 있다면 업데이트 한다. 그것이 아니라면
+        // 새로운 유저 데이터를 엔티티에 저장한다
         User user = saveOrUpdate(attributes);
         httpSession.setAttribute("user", new SessionUser(user));
 

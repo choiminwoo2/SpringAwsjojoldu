@@ -14,9 +14,11 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class BaseTimeEntity {
 
+    // 게시글 등록하면 자동으로 날짜가 로그에 남는다.
     @CreatedDate
     private LocalDateTime createdDate;
 
+    // 게시글 수정하면 자동으로 날자가 로그에 남는다.
     @LastModifiedDate
     private LocalDateTime modifiedDate;
 }

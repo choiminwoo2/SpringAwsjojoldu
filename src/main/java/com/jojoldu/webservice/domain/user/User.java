@@ -11,6 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 public class User extends BaseTimeEntity {
+    //Id= 주식별자
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
